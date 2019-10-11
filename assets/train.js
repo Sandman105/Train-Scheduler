@@ -83,8 +83,18 @@ trainDatabase.ref().on("child_added", function (dbSnapshot) {
     console.log(trainFrequency);
     console.log(trainTrack);
 
+    var firstTrainTimeClean = moment.unix(firstTrainTime).format("HH");
+    console.log(firstTrainTimeClean);
 
+    var newRow = $("<tr>").append(
+        $("<td>").text(trainName),
+        $("<td>").text(trainDestination),
+        $("<td>").text(firstTrainTimeClean),
+        $("<td>").text(trainFrequency),
+        $("<td>").text(trainTrack),
+      );
 
+      $("#add-train > tbody").append(newRow);
 
 
 });   
