@@ -33,7 +33,7 @@ $("#submit-train").on("click", function (event) {
     var trainDestination = $("#train-destination").val().trim();
     var firstTrainTime = $("#first-train-time").val().trim();
     var trainFrequency = $("#train-frequency").val().trim();
-    var trainTrack = $("#train-track").val().trim();
+    //var trainTrack = $("#train-track").val().trim();
 
     //So the empty values in the object will hold the user input.
     var newTrainEmpty = {
@@ -41,7 +41,7 @@ $("#submit-train").on("click", function (event) {
         location: trainDestination,
         newArrival: firstTrainTime,
         frequency: trainFrequency,
-        trackLocation: trainTrack,
+        //trackLocation: trainTrack,
     };
 
     //Seeing new values in console.log, no errors
@@ -55,14 +55,14 @@ $("#submit-train").on("click", function (event) {
     console.log(newTrainEmpty.location);
     console.log(newTrainEmpty.newArrival);
     console.log(newTrainEmpty.frequency);
-    console.log(newTrainEmpty.trackLocation);
+    //console.log(newTrainEmpty.trackLocation);
 
     //As we did in other examples in our activities, clear out the values that were entered, so start a new set of values. Tested, values cleared after submitting new values.
     $("#train-name").val("");
     $("#train-destination").val("");
     $("#first-train-time").val("");
     $("#train-frequency").val("");
-    $("#train-track").val("");
+    //$("#train-track").val("");
 
 });
 
@@ -75,15 +75,15 @@ trainDatabase.ref().on("child_added", function (dbSnapshot) {
     var trainDestination = dbSnapshot.val().location;
     var firstTrainTime = dbSnapshot.val().newArrival;
     var trainFrequency = dbSnapshot.val().frequency;
-    var trainTrack = dbSnapshot.val().trackLocation;
+    //var trainTrack = dbSnapshot.val().trackLocation;
 
     console.log(trainName);
     console.log(trainDestination);
     console.log(firstTrainTime);
     console.log(trainFrequency);
-    console.log(trainTrack);
+    //console.log(trainTrack);
 
-    var firstTrainTimeClean = moment.unix(firstTrainTime).format("HH");
+    var firstTrainTimeClean = moment.unix(firstTrainTime).format("HH:mm");
     console.log(firstTrainTimeClean);
 
     var newRow = $("<tr>").append(
@@ -91,7 +91,8 @@ trainDatabase.ref().on("child_added", function (dbSnapshot) {
         $("<td>").text(trainDestination),
         $("<td>").text(firstTrainTimeClean),
         $("<td>").text(trainFrequency),
-        $("<td>").text(trainTrack),
+        
+        //$("<td>").text(trainTrack),
       );
 
       $("#add-train > tbody").append(newRow);
