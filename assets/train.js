@@ -101,8 +101,6 @@ trainDatabase.ref().on("child_added", function (dbSnapshot) {
     //Convert string to start time moment object.
     //var firstArrival //Need to look up moment conversion
 
-
-
     //Need to get current time.
     //var currentTime
     
